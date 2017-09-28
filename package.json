@@ -1,0 +1,17 @@
+{
+  "name": "js-tictactoe",
+  "version": "1.0.0",
+  "description": "A recreation of the childhood table-flipper.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.0"
+  }
+}
