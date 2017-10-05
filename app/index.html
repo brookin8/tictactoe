@@ -6,6 +6,9 @@
 	<!-- Bootstrap CSS CDN-->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
+	<link href="https://fonts.googleapis.com/css?family=Lily+Script+One|Lobster|Lobster+Two|Oleo+Script|Oleo+Script+Swash+Caps|Sarina|Sonsie+One" rel="stylesheet">
+
+	<link href="https://fonts.googleapis.com/css?family=Bowlby+One" rel="stylesheet">
 	<!-- My CSS file -->
 	<link rel="stylesheet" href="style.css">
 
@@ -21,37 +24,44 @@
 
 <body>
 
-	<div class="tictactoe container">
+	<div class="container" id="tictactoe" v-cloak>
+
+		<div id="gameBoard" v-on:click="takeSquare()">
+		
 		<h1>Tic-Tac-Toe</h1>
-
-		<div class = "row bg-info img-rounded" id="notification">
-			<p class="text-center" id="winnerMessage"></p>
-		</div>
-
-		<div id="gameBoard">
-			<div class = "row">
-				<div class="col-xs-4 space line-right line-bottom"></div>
-				<div class="col-xs-4 space line-right line-bottom"></div>
-				<div class="col-xs-4 space line-bottom"></div>
-			</div>
-			<div class = "row">
-				<div class="col-xs-4 space line-right line-bottom"></div>
-				<div class="col-xs-4 space line-right line-bottom"></div>
-				<div class="col-xs-4 space line-bottom"></div>
-			</div>
-			<div class = "row">
-				<div class="col-xs-4 space line-right"></div>
-				<div class="col-xs-4 space line-right"></div>
-				<div class="col-xs-4 space"></div>
-			</div>
-		</div>
-
-		<div class ="row text-center">
-			<button class="btn btn-primary" id="restartButton">New Game</button>
-		</div>
 	
+		<!-- <div class = "row bg-info img-rounded" id="notification">
+			<p class="text-center" id="winnerMessage" v-if="checkForWinVar">{{ symbol_toggle }} won!</p>
+			<p class="text-center" id="drawMessage" v-if="checkForDrawVar">It's a draw</p>
+		</div> -->
+		
+		<div class ="innerGameBoard" v-on:click="checkForWin()">
+			<h1 class="text-center" id="winnerMessage" v-if="checkForWinVar">{{ symbol_toggle }} wins!</h1>
+			<h1 class="text-center" id="drawMessage" v-else-if="checkForDrawVar">It's a draw</h1>
+			<div v-else>
+				<div class = "row tictacRow">
+					<div v-on:click="symbol_pick1 = symbol_toggle" class="col-xs-4 space line-right line-bottom">{{ symbol_pick1 }}</div>
+					<div v-on:click="symbol_pick2 = symbol_toggle" class="col-xs-4 space line-right line-bottom">{{ symbol_pick2 }}</div>
+					<div v-on:click="symbol_pick3 = symbol_toggle" class="col-xs-4 space line-bottom">{{ symbol_pick3 }}</div>
+				</div>
+				<div class = "row tictacRow">
+					<div v-on:click="symbol_pick4 = symbol_toggle" class="col-xs-4 space line-right line-bottom">{{ symbol_pick4 }}</div>
+					<div v-on:click="symbol_pick5 = symbol_toggle" class="col-xs-4 space line-right line-bottom">{{ symbol_pick5 }}</div>
+					<div v-on:click="symbol_pick6 = symbol_toggle" class="col-xs-4 space line-bottom">{{ symbol_pick6 }}</div>
+				</div>
+				<div class = "row tictacRow">
+					<div v-on:click="symbol_pick7 = symbol_toggle" class="col-xs-4 space line-right">{{ symbol_pick7 }}</div>
+					<div v-on:click="symbol_pick8 = symbol_toggle" class="col-xs-4 space line-right">{{ symbol_pick8 }}</div>
+					<div v-on:click="symbol_pick9 = symbol_toggle" class="col-xs-4 space">{{ symbol_pick9 }}</div>
+				</div>
+			</div>
+		</div>
+
+		<button class="btn btn-primary" id="restartButton" v-on:click="newGame()">Restart Game</button>
+	</div>
 	</div>
 
+<script src="https://unpkg.com/vue"></script>
 <script src="wins.js"></script>
 <script src="main.js"></script>
 

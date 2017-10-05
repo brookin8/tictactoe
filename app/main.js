@@ -1,88 +1,73 @@
-//Globals
-var restartButton = document.getElementById('restartButton');
-var spaces = document.getElementsByClassName('space');
-var symbols = ["O","X"];
-var turn = 0;
-var notification = document.getElementById('notification');
-var winnerMessage = document.getElementById('winnerMessage');
 
+var menu = new Vue ({
 
-// Waits for page to load before being able to use functions
-document.onreadystatechange = function () {
-	if (document.readyState == "interactive") {
-		restartButton.onclick = startGame; //Runs startGame() when you hit button
-		startGame(); //Runs start game whenever the page reloads
-	}
-};
+	el : '#tictactoe',
 
+	data: {
 
+		symbol_toggle: 'O',
+		symbol_pick1: '',
+		symbol_pick2: '',
+		symbol_pick3: '',
+		symbol_pick4: '',
+		symbol_pick5: '',
+		symbol_pick6: '',
+		symbol_pick7: '',
+		symbol_pick8: '',
+		symbol_pick9: '',
+		checkForWinVar: false,
+		checkForDrawVar: false
 
-function startGame() {
-	
-	//Clear Board
-	//clear();
+	},
 
-	//Reset turn counter
-	turn = 0;
-
-	//Remove winner notification and make sure div is hidden
-	notification.style.display = 'none';
-	winnerMessage.innerHTML = "";	
-
-	//Add click events on squares
-	for (i=0 ; i<spaces.length; i++) { //for loop to go through each space
-		spaces[i].innerHTML = '';
-		spaces[i].addEventListener("click", takeSpace); //add event listener to each space that listens for click
-	}
-
-}
-
-function takeSpace() {
-
-	//I wrote the innerHTML symbol piece like this:
-	//if(turn === 0 || turn%2 === 0) {
-	// 	this.innerHTML = symbols[1];
-	// } else {
-	// 	this.innerHTML = symbols[0];
-	// }
-
-	turn++;
-	
-	var currentPlayer = symbols[turn % 2]
-	this.innerHTML = currentPlayer;
-	this.removeEventListener("click", takeSpace); //removes function from space when clicked
-
-
-	for(var i=0; i < wins.length; i++) {
-		if(checkForWin(wins[i])) {
-			for (var j=0; j < spaces.length; j++) {
-				spaces[j].removeEventListener("click",takeSpace);
+	methods: { 
+		takeSquare: function(square) {
+			if (this.symbol_toggle === 'O') {
+				this.symbol_toggle = 'X';
+			} else {
+				this.symbol_toggle = 'O';
 			}
-			notification.style.display = 'block';
-			winnerMessage.innerHTML = "Yay! "+ currentPlayer+ " won!";
-			break;
-		} else {
-			if(turn == 9) {
-				notification.style.display = 'block';
-				winnerMessage.innerHTML += "It's a Draw";
+			
+		},
+		
+		newGame: function() {
+			this.symbol_toggle = 'O';
+			this.symbol_pick1 = '';
+			this.symbol_pick2 = '';
+			this.symbol_pick3 = '';
+			this.symbol_pick4 = '';
+			this.symbol_pick5 = '';
+			this.symbol_pick6 = '';
+			this.symbol_pick7 = '';
+			this.symbol_pick8 = '';
+			this.symbol_pick9 = '';
+			this.checkForWinVar = false;
+			this.checkForDrawVar = false;
+
+
+		},
+
+		checkForWin: function() {
+			
+			var win_array = [[0,1,2], [3,4,5], [6,7,8], [0,4,8], [2,4,6], [0,3,6], [1,4,7], [2,5,8]];
+			var symbolPick_array = [];
+			symbolPick_array.push(this.symbol_pick1, this.symbol_pick2,this.symbol_pick3,this.symbol_pick4,
+				this.symbol_pick5,this.symbol_pick6,this.symbol_pick7,this.symbol_pick8,this.symbol_pick9);
+			
+			for(var i=0;i<win_array.length;i++) {
+				if(symbolPick_array[win_array[i][0]]!== '' && symbolPick_array[win_array[i][0]] === symbolPick_array[win_array[i][1]] 
+					&& symbolPick_array[win_array[i][0]] === symbolPick_array[win_array[i][2]]) {
+						this.takeSquare();
+						this.checkForWinVar = true;
+				} else if(!symbolPick_array.includes('')) {
+					this.checkForDrawVar = true;
+				}
 			}
+		
 		}
+	
 	}
-}
 
-	
-
-
-
-
-function checkForWin(winArray) {
-	
-	//Win happens if all indices contain same symbol
-	//Returns true if all true, and false if one false
-	return spaces[winArray[0]].innerHTML !== '' &&
-		spaces[winArray[0]].innerHTML === spaces[winArray[1]].innerHTML && 
-		spaces[winArray[0]].innerHTML === spaces[winArray[2]].innerHTML;
-} 
-
+});
 
 
