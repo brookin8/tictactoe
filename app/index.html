@@ -24,9 +24,9 @@
 
 <body>
 
-	<div class="container" id="tictactoe" v-cloak>
+	<div class="container-fluid" id="tictactoe" v-cloak>
 
-		<div id="gameBoard" v-on:click="takeSquare()">
+		<div class = "container-fluid" id="gameBoard" v-on:click="takeSquare()">
 		
 		<h1>Tic-Tac-Toe</h1>
 	
@@ -35,7 +35,7 @@
 			<p class="text-center" id="drawMessage" v-if="checkForDrawVar">It's a draw</p>
 		</div> -->
 		
-		<div class ="innerGameBoard" v-on:click="checkForWin()">
+		<div class="container-fluid" id ="innerGameBoard" v-on:click="checkForWin()">
 			<h1 class="text-center" id="winnerMessage" v-if="checkForWinVar">{{ symbol_toggle }} wins!</h1>
 			<h1 class="text-center" id="drawMessage" v-else-if="checkForDrawVar">It's a draw</h1>
 			<div v-else>
