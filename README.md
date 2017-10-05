@@ -2,4 +2,4 @@
 
 A recreation of the childhood table-flipper. 
 
-Coded in HTML, CSS, JavaScript. 
+Coded in HTML, CSS, Vue.js. 

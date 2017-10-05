@@ -1,0 +1,25 @@
+{
+  "name": "vue-tictactoe",
+  "version": "1.0.0",
+  "description": "A recreation of the childhood table-flipper.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brookin8/tictactoe.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brookin8/tictactoe/issues"
+  },
+  "homepage": "https://github.com/brookin8/tictactoe#readme",
+  "dependencies": {
+    "express": "^4.16.1"
+  }
+}

@@ -24,11 +24,3 @@ Recreate the childhood class, tic-tac-toe, in Javascript.
 6. Add a link to the rules, which displays in a modal.
 7. Cheat codes. 
 
-## Too simple? Try...
-
-1. ...recreating Checkers. 
-2. ...recreating Othello.
-3. ...recreating Go.
-4. ...recreating Chess. 
-
-OR ROOK! 
